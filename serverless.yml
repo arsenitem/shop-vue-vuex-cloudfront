@@ -4,7 +4,6 @@ frameworkVersion: '2'
 
 provider:
   name: aws
-  region: eu-west-1
   runtime: nodejs12.x
   # setup profile for AWS CLI.
   # profile: node-aws
@@ -18,11 +17,10 @@ plugins:
 
 custom:
   client:
-    bucketName: node-in-aws-web-bucket
+    bucketName: hw1-eu-v2
     distributionFolder: build
-  s3BucketName: ${self:custom.client.bucketName}
 
-  ## Serverless-single-page-app-plugin configuration:
+  s3BucketName: ${self:custom.client.bucketName}
   s3LocalPath: ${self:custom.client.distributionFolder}/
 
 resources:
