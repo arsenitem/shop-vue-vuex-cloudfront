@@ -40,5 +40,10 @@ npm run test:e2e
 npm run lint
 ```
 
+### Deploy
+```
+npm run cloudfront:update:build:deploy:nc
+```
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).

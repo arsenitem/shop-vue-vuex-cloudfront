@@ -10,7 +10,8 @@ const fetchAvailableProducts = async (): Promise<Product[]> => {
 		.get(`${API_PATHS.bff}/products`)
 		.then(res => {
 			if (res.data) {
-				return res.data.productlist;
+				console.log(res.data);
+				return res.data.productslist;
 			}
 		})
 		.catch(e => {

@@ -77,10 +77,11 @@ export default Vue.extend({
 		},
 		fetchProducts() {
 			this.isFetching = true;
-
+			console.log('fetcj');
 			productApi
 				.fetchAvailableProducts()
 				.then(products => {
+					console.log(products);
 					this.products = products;
 				})
 				.finally(() => {
