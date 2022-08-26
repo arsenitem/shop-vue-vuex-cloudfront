@@ -5,6 +5,7 @@ import Vuex from 'vuex';
 
 import { cartModuleStore } from './domain/cart';
 import { snackbarModuleStore } from './snackbar';
+import { authModuleStore } from './auth';
 
 Vue.use(Vuex);
 /*
@@ -19,6 +20,7 @@ export default new Vuex.Store({
 	modules: {
 		cart: cartModuleStore,
 		snackbar: snackbarModuleStore,
+		auth: authModuleStore,
 	},
 	getters: {
 		cartErrorMessage: state => state.cart.errorMessage,

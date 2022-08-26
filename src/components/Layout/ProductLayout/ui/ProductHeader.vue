@@ -22,6 +22,7 @@
 		</v-btn>
 
 		<v-language-picker-btn-menu></v-language-picker-btn-menu>
+		<v-login-btn-menu v-if="!isAuth"></v-login-btn-menu>
 	</v-app-bar>
 </template>
 
@@ -29,14 +30,18 @@
 import Vue from 'vue';
 
 import VAccountBtnMenu from './AccountButtonMenu.vue';
+import VLoginBtnMenu from './LoginButtonMenu.vue';
 import VLanguagePickerBtnMenu from './LanguagePickerButtonMenu.vue';
-
+import { mapGetters } from 'vuex';
 export default Vue.extend({
 	name: 'ProductHeader',
 	props: {
 		cartCountBadge: Number,
 	},
-	components: { VAccountBtnMenu, VLanguagePickerBtnMenu },
+	components: { VAccountBtnMenu, VLanguagePickerBtnMenu, VLoginBtnMenu },
+	computed: {
+		...mapGetters('auth', ['isAuth']),
+	},
 });
 </script>
 

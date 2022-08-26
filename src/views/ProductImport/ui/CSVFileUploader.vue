@@ -47,9 +47,9 @@
 <script lang="ts">
 import Vue from 'vue';
 
-import axios from 'axios';
+import axios, { AxiosPromise, AxiosResponse } from 'axios';
 
-const fetchPresignedS3Url = (url: string, fileName: string) => {
+const fetchPresignedS3Url = (url: string, fileName: string): AxiosPromise => {
 	const authToken = localStorage.getItem('authorization_token');
 	return axios({
 		method: 'GET',
@@ -66,7 +66,7 @@ const fetchPresignedS3Url = (url: string, fileName: string) => {
 const uploadFileBy = async (url: string, file: File) => {
 	const destUrl = await fetchPresignedS3Url(url, file.name);
 
-	console.info('Uploading to: ', destUrl.data);
+	console.info('Uploading to: ', destUrl);
 
 	// save
 	const result = await fetch(destUrl.data, {
@@ -119,7 +119,7 @@ export default Vue.extend({
 
 			try {
 				await uploadFileBy(this.url, this.file as File);
-			} catch (e) {
+			} catch (e: any) {
 				const msg = this.$t('errorMessage.cantUploadFile', {
 					reason: e.message,
 				});

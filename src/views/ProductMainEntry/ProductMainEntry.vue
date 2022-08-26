@@ -9,7 +9,8 @@ import Vue from 'vue';
 import { mapGetters } from 'vuex';
 
 import { VProductLayout } from '@/components/Layout/ProductLayout';
-
+import { API_PATHS } from '@/constants/api-paths';
+import { Auth } from '@/constants/auth';
 export default Vue.extend({
 	name: 'ProductMainEntry',
 	components: { VProductLayout },
@@ -31,6 +32,12 @@ export default Vue.extend({
 		fetchInitialCart() {
 			this.$store.dispatch('cart/fetchCart');
 		},
+	},
+	mounted() {
+		if (this.$route.query.code) {
+			console.log('aaa');
+			this.$store.dispatch('auth/getToken', this.$route.query.code);
+		}
 	},
 });
 </script>
